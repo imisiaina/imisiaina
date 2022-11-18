@@ -1,12 +1,16 @@
 ### Hi there 👋
 
+<div align= "center">
+
 [Github CV](https://github.com/imisiaina/CV/blob/master/README.md) | [Showwcase](https://www.showwcase.com/imisiaina) | [LinkedIn](https://www.linkedin.com/in/imisi-aina-874a9b18a/)
+
+</div>
 
 🌱 Trainee Software Developer at Makers
 
 Languages & Frameworks: 
 
-Ruby | Javascript | HTML | CSS | Sinatra | Jest | Cypress | Node.js | PostgreSQL | MongoDB 
+Ruby (Sinatra, Rspec) | Javascript (Jest, Node.js, React) | HTML | CSS | Cypress | SQL (PostgreSQL) | MongoDB 
 
 
 [![Imisi's GitHub stats](https://github-readme-stats.vercel.app/api?username=imisiaina)](https://github.com/imisiaina/github-readme-stats)
