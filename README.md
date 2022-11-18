@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-[Github CV](https://github.com/imisiaina/CV/blob/master/README.md) | [Showwcase](https://www.showwcase.com/imisiaina)
+[Github CV](https://github.com/imisiaina/CV/blob/master/README.md) | [Showwcase](https://www.showwcase.com/imisiaina) | [LinkedIn](https://www.linkedin.com/in/imisi-aina-874a9b18a/)
 
 🌱 Trainee Software Developer at Makers
 
