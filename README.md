@@ -1,12 +1,22 @@
 ### Hi there 👋
 
+[Github CV](https://github.com/imisiaina/CV/blob/master/README.md) | [Showwcase](https://www.showwcase.com/imisiaina)
+
+🌱 Trainee Software Developer at Makers
+
+Languages & Frameworks: 
+
+Ruby | Javascript | HTML | CSS | Sinatra | Jest | Cypress | Node.js | PostgreSQL | MongoDB 
+
+
+[![Imisi's GitHub stats](https://github-readme-stats.vercel.app/api?username=imisiaina)](https://github.com/imisiaina/github-readme-stats)
 <!--
 **imisiaina/imisiaina** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 
 - 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
+-  I’m currently learning ...
 - 👯 I’m looking to collaborate on ...
 - 🤔 I’m looking for help with ...
 - 💬 Ask me about ...
