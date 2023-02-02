@@ -16,7 +16,10 @@ Ruby (Sinatra, Rspec) | Javascript (Jest, Node.js, React) | HTML | CSS | Cypress
 
 [![Imisi's GitHub stats](https://github-readme-stats.vercel.app/api?username=imisiaina&show_icons=true&theme=gruvbox)](https://github.com/imisiaina/github-readme-stats)
   
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&layout=compact)](https://github.com/imisiaina/github-readme-stats)
+  
   ![](https://komarev.com/ghpvc/?username=imisiaina&color=red)
+  
 
 </div>
 <!--
