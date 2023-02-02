@@ -21,7 +21,7 @@ Ruby (Sinatra, Rspec) | Javascript (Jest, Node.js, React) | HTML | CSS | Cypress
   <img align="center" src="https://github-readme-stats.vercel.app/api?username=imisiaina&show_icons=true&theme=gruvbox&include_all_commits=true"/>
 </a>
 <a href="https://github.com/imisiaina/github-readme-stats">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina"/>
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&langs_count=4"/>
 </a> 
   
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=imisiaina&theme=highcontrast&date_format=j%20M%5B%20Y%5D&mode=weekly)](https://git.io/streak-stats)
