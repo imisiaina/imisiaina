@@ -10,7 +10,7 @@
 
 🌱 Recent Makers Graduate Software Developer
 
-Languages & Frameworks: 
+## Languages & Frameworks: 
 
 <img height="60px" width="60px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original-wordmark.svg" /> 
 <img height="60px" width="60px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rspec/rspec-original-wordmark.svg" />         
