@@ -12,7 +12,7 @@
 
 Languages & Frameworks: 
 
-Ruby (Sinatra, Rspec) | Javascript (Jest, Node.js, React) | HTML | CSS | Cypress | SQL (PostgreSQL) | MongoDB 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" /> Ruby (Sinatra, Rspec) | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" /> Javascript (Jest, Node.js, React) | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" /> - HTML | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /> CSS | Cypress | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" /> - SQL (PostgreSQL) | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" /> - MongoDB | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" />
 
 ## My Stats
   
