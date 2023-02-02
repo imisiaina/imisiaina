@@ -7,7 +7,7 @@
 
 
 
-🌱 Trainee Software Developer at Makers
+🌱 Recent Makers Graduate Software Developer
 
 Languages & Frameworks: 
 
