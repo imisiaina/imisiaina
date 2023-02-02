@@ -14,9 +14,12 @@ Languages & Frameworks:
 Ruby (Sinatra, Rspec) | Javascript (Jest, Node.js, React) | HTML | CSS | Cypress | SQL (PostgreSQL) | MongoDB 
 
 
-[![Imisi's GitHub stats](https://github-readme-stats.vercel.app/api?username=imisiaina&show_icons=true&theme=gruvbox&include_all_commits=true)](https://github.com/imisiaina/github-readme-stats)  <br> [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&layout=compact)](https://github.com/imisiaina/github-readme-stats)
-  
-
+<a href="https://github.com/imisiaina/github-readme-stats">
+  <imh align=""center" src="https://github-readme-stats.vercel.app/api?username=imisiaina&show_icons=true&theme=gruvbox&include_all_commits=true"/>
+</a>
+<a href="https://github.com/imisiaina/github-readme-stats">
+  <imh align=""center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&layout=compact"/>
+</a> 
   
   ![](https://komarev.com/ghpvc/?username=imisiaina&color=red)
   
