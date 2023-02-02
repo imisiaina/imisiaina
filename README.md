@@ -4,7 +4,8 @@
 
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=nord)](https://github.com/piyushsuthar/github-readme-quotes)
 
-[Github CV](https://github.com/imisiaina/CV/blob/master/README.md) | [Showwcase](https://www.showwcase.com/imisiaina) | [LinkedIn](https://www.linkedin.com/in/imisi-aina-874a9b18a/)
+[Github CV](https://github.com/imisiaina/CV/blob/master/README.md) ![image](https://user-images.githubusercontent.com/54293068/216401841-389da426-97b4-462a-9146-6c04189b7bda.png)
+| [Showwcase](https://www.showwcase.com/imisiaina) | [LinkedIn](https://www.linkedin.com/in/imisi-aina-874a9b18a/)
 
 
 
