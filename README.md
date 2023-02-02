@@ -1,4 +1,4 @@
-[![MasterHead](https://i.pinimg.com/originals/6a/49/1e/6a491e2d05abf02175b05e27c8da0c33.jpg)](https://github.com/imisiaina)
+[![MasterHead](https://w0.peakpx.com/wallpaper/1021/487/HD-wallpaper-technology-code-programming-programmer.jpg)](https://github.com/imisiaina)
 
 <div align= "center">
 
@@ -22,6 +22,8 @@ Ruby (Sinatra, Rspec) | Javascript (Jest, Node.js, React) | HTML | CSS | Cypress
 <a href="https://github.com/imisiaina/github-readme-stats">
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&layout=compact"/>
 </a> 
+  
+[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=imisiaina&theme=highcontrast&date_format=j%20M%5B%20Y%5D&mode=weekly)](https://git.io/streak-stats)
   
   <br>
   
