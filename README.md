@@ -15,7 +15,8 @@ Languages & Frameworks:
 
 Ruby (Sinatra, Rspec) | Javascript (Jest, Node.js, React) | HTML | CSS | Cypress | SQL (PostgreSQL) | MongoDB 
 
-
+##My Stats
+  
 <a href="https://github.com/imisiaina/github-readme-stats">
   <img align="center" src="https://github-readme-stats.vercel.app/api?username=imisiaina&show_icons=true&theme=gruvbox&include_all_commits=true"/>
 </a>
