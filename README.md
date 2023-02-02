@@ -20,7 +20,9 @@ Ruby (Sinatra, Rspec) | Javascript (Jest, Node.js, React) | HTML | CSS | Cypress
 <a href="https://github.com/imisiaina/github-readme-stats">
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&layout=compact"/>
 </a> 
+  
   <br>
+  
 ![](https://komarev.com/ghpvc/?username=imisiaina&color=red)
   
 
