@@ -2,8 +2,7 @@
 
 <div align= "center">
 
-### Hi there 👋
-
+[![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=nord)](https://github.com/piyushsuthar/github-readme-quotes)
 
 [Github CV](https://github.com/imisiaina/CV/blob/master/README.md) | [Showwcase](https://www.showwcase.com/imisiaina) | [LinkedIn](https://www.linkedin.com/in/imisi-aina-874a9b18a/)
 
