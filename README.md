@@ -34,7 +34,7 @@
 ## My Stats
   
 <a href="https://github.com/imisiaina/github-readme-stats">
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=imisiaina&show_icons=true&theme=gruvbox&include_all_commits=true&hide=issues,stars"/>
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=imisiaina&show_icons=true&theme=gruvbox&include_all_commits=true&hide=issues,stars&count_private=true"/>
 </a>
 <a href="https://github.com/imisiaina/github-readme-stats">
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&langs_count=4&theme=gruvbox&layout=compact"/>
