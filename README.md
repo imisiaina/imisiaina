@@ -37,7 +37,7 @@
   <img align="center" src="https://github-readme-stats.vercel.app/api?username=imisiaina&show_icons=true&theme=gruvbox&include_all_commits=true&hide=issues,stars"/>
 </a>
 <a href="https://github.com/imisiaina/github-readme-stats">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&langs_count=4&theme=gruvbox"/>
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=imisiaina&langs_count=4&theme=gruvbox&layout=compact"/>
 </a> 
   
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=imisiaina&theme=highcontrast&date_format=j%20M%5B%20Y%5D&mode=weekly)](https://git.io/streak-stats)
