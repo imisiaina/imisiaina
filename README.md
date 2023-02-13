@@ -4,7 +4,7 @@
 
 [![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=nord)](https://github.com/piyushsuthar/github-readme-quotes)
 
-<a href="https://github.com/imisiaina/CV/blob/master/README.md" target="blank"><img align="center" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" height="30" width="40" /></a> - Github CV | [Showwcase](https://www.showwcase.com/imisiaina) | <a href="https://www.linkedin.com/in/imisi-aina-874a9b18a/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="" height="30" width="40" /></a> - LinkedIn
+<a href="https://github.com/imisiaina/CV/blob/master/README.md" target="blank"><img align="center" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" height="30" width="40" /></a> | [Showwcase](https://www.showwcase.com/imisiaina) | <a href="https://www.linkedin.com/in/imisi-aina-874a9b18a/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="" height="30" width="40" /></a>
 
 
 
