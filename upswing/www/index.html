@@ -259,28 +259,36 @@ let anchors = [], gems = [], parts = [], floats = [], trail = [];
 let p, camTop, tideY, time = 0, runTime = 0, overAt = 0;
 let score = 0, maxIdx = 0, combo = 0, streak = 0, runGems = 0, startY = 0, shake = 0, flash = 0;
 
-function grabR(i){ return Math.max(34, 50 - i*0.22); }
+function grabR(i){ return Math.max(42, 62 - i*0.16); }
+// Minimum tap window (ms) the generator guarantees for ring i: generous early, tighter later.
+function minWindow(i){ return Math.max(170, 300 - i*4); }
 
-// Can a release from anchor a (at full swing) carry the player within tol of b?
-function reachable(a, b, tol){
-  const L = L0, dt = 1/120;
-  for(const dir of [1,-1]){
-    for(let deg=-30; deg<=120; deg+=5){
-      const th = dir*deg*Math.PI/180;
-      const k = Math.cos(th) - Math.cos(AMP); if(k <= 0) continue;
-      const om = BOOST*dir*Math.sqrt(2*G*L*k)/L;
-      let x = a.x + L*Math.sin(th), y = a.y + L*Math.cos(th);
-      let vx = L*om*Math.cos(th), vy = -L*om*Math.sin(th);
-      for(let s=0; s<260; s++){
-        vy += G*dt; x += vx*dt; y += vy*dt;
-        if(x < PR){ x = PR; vx = -vx*.6; } else if(x > W-PR){ x = W-PR; vx = -vx*.6; }
-        const dx = x-b.x, dy = y-b.y;
-        if(dx*dx + dy*dy < tol*tol) return true;
-        if(vy > 0 && y > b.y + 160) break;
-      }
+// How long (ms) is the tap window, per full swing on anchor a, that carries the player into ring b?
+// Releases that would first catch a lower ring (or swing back onto a) don't count.
+function releaseWindow(a, b, lower){
+  const L = L0, fs = 60, dt = 1/fs, sub = 8, Rb = grabR(b.i)*.85;
+  let th = AMP, om = 0, flips = 0, lastSign = 0;
+  const hits = [];
+  while(flips < 2 && hits.length < fs*4){
+    for(let k=0; k<sub; k++){ om += -(G/L)*Math.sin(th)*dt/sub; th += om*dt/sub; }
+    const sg = Math.sign(om);
+    if(lastSign && sg && sg !== lastSign) flips++;
+    if(sg) lastSign = sg;
+    let x = a.x + L*Math.sin(th), y = a.y + L*Math.cos(th);
+    let vx = BOOST*L*om*Math.cos(th), vy = -BOOST*L*om*Math.sin(th), hit = 0;
+    for(let s=0; s<120; s++){
+      vy += G*dt; x += vx*dt; y += vy*dt;
+      if(x < PR){ x = PR; vx = -vx*.6; } else if(x > W-PR){ x = W-PR; vx = -vx*.6; }
+      if(Math.hypot(x-b.x, y-b.y) < Rb){ hit = 1; break; }
+      if(s*dt > .35 && Math.hypot(x-a.x, y-a.y) < grabR(a.i)) break;
+      if(lower && Math.hypot(x-lower.x, y-lower.y) < grabR(lower.i)) break;
+      if(vy > 0 && y > Math.max(a.y, b.y) + 260) break;
     }
+    hits.push(hit);
   }
-  return false;
+  let best = 0, run = 0;
+  for(const h of hits.concat(hits)){ run = h ? run + 1 : 0; if(run > best) best = run; }
+  return Math.min(best, hits.length)*1000/fs;
 }
 
 function makeAnchor(i, x, y){
@@ -289,25 +297,40 @@ function makeAnchor(i, x, y){
   if(i > 14 && Math.random() < Math.min(.3, .1 + i*.004)) a.fragile = true;
   return a;
 }
-function genNext(prev){
-  const i = prev.i + 1, diff = Math.min(1, i/70), tol = grabR(i)*.55;
-  for(let t=0; t<50; t++){
-    const dy = lerp(55, 100, diff) + rand(-10, 22);
+// Each ring is either a breather (its grab zone brushes your swing, so you can tap as you pass)
+// or a leap (a real jump with a narrower tap window). Leaps get more common as you climb.
+const EASY_WIN = 560;
+function leapChance(i){ return clamp((i - 5)/55, 0, .8); }
+function genNext(prev, lower){
+  const i = prev.i + 1, need = minWindow(i), leap = Math.random() < leapChance(i);
+  const base = {x:prev.bx, y:prev.y, i:prev.i}, low = lower ? {x:lower.bx, y:lower.y, i:lower.i} : null;
+  let best = null, bestWin = 0, any = null;
+  for(let t=0; t<44; t++){
+    // after 30 failed leap tries, settle for a breather rather than an unfair jump
+    const asLeap = leap && t < 30;
+    const reach = asLeap ? rand(.2, .8) : rand(0, .5);
+    const dy = lerp(40, 125, reach) + rand(-8, 8);
     const side = Math.random() < .5 ? -1 : 1;
-    let x = prev.bx + side*rand(lerp(120, 140, diff), lerp(185, 210, diff));
+    let x = prev.bx + side*lerp(115, 235, Math.random()*.4 + reach*.6);
     if(x < 36 || x > W-36) x = prev.bx - (x - prev.bx);
     x = clamp(x, 36, W-36);
-    const c = {x, y: prev.y - dy};
-    if(Math.hypot(c.x - prev.bx, c.y - prev.y) < lerp(145, 170, diff)) continue;   // keep rings outside the swing circle
-    if(reachable({x:prev.bx, y:prev.y}, c, tol)) return makeAnchor(i, c.x, c.y);
+    const c = {x, y: prev.y - dy, i};
+    if(Math.hypot(c.x - prev.bx, c.y - prev.y) < L0 + 22) continue;  // never inside the circle you swing on
+    const win = releaseWindow(base, c, low);
+    if(win < need) continue;
+    if(asLeap ? win < EASY_WIN : (win >= EASY_WIN || t >= 30)) return makeAnchor(i, c.x, c.y);
+    if(!any) any = c;
+    if(!leap && win > bestWin){ bestWin = win; best = c; }
   }
+  const pick = best || any;
+  if(pick) return makeAnchor(i, pick.x, pick.y);
   const x = clamp(prev.bx + (prev.bx < W/2 ? 1 : -1)*150, 36, W-36);
   return makeAnchor(i, x, prev.y - 40);
 }
 function extendWorld(){
   while(anchors[anchors.length-1].y > camTop - 260){
     const prev = anchors[anchors.length-1];
-    const n = genNext(prev);
+    const n = genNext(prev, anchors[anchors.length-2]);
     anchors.push(n);
     if(n.i > 1 && Math.random() < .42){
       const mx = (prev.bx + n.bx)/2 + rand(-20, 20), my = Math.min(prev.y, n.y) + rand(-50, 10);
@@ -344,7 +367,7 @@ function stepAttached(dt){
   const a = p.anchor;
   p.omega += -(G/p.L)*Math.sin(p.theta)*dt;
   if(Math.abs(p.L - L0) > .3){                       // reel toward rest length, conserving angular momentum
-    const nl = p.L + (L0 - p.L)*Math.min(1, 7*dt);
+    const nl = p.L + (L0 - p.L)*Math.min(1, 11*dt);
     p.omega *= (p.L/nl)*(p.L/nl); p.L = nl;
   }
   const KE = .5*(p.L*p.omega)**2, PE = G*p.L*(1 - Math.cos(p.theta)), Et = G*p.L*(1 - Math.cos(AMP));
@@ -428,7 +451,7 @@ function startRun(){
   state = 'play'; runTime = 0;
   menu.hidden = true; over.hidden = true; pausedOv.hidden = true; hud.hidden = false;
   tideY = camTop + H + 120;
-  floats.push({x:W/2, y:camTop + H*.78, text:'Tap to let go', c:'#f6eefc', life:2.2});
+  floats.push({x:W/2, y:camTop + H*.78, text:'Tap when a ring lights up', c:'#f6eefc', life:2.6});
   updateHud();
 }
 function die(cause){
@@ -534,7 +557,7 @@ function update(dt){
         burst(g.x, g.y, 10, '#9ff0d0', 140); updateHud();
       }
     }
-    const speed = runTime < 2.5 ? 0 : Math.min(24 + score*1.05, 92);
+    const speed = runTime < 4 ? 0 : Math.min(12 + score*0.7, 72);
     tideY -= speed*dt;
     tideY = Math.min(tideY, camTop + H - 18 - safeB);
   }
@@ -546,8 +569,8 @@ function update(dt){
   extendWorld();
 
   if(state === 'play'){
-    if(p.y > tideY - 4) die(p.near ? 'Missed by a hair' : 'The tide got you');
-    else if(p.y > camTop + H + 40) die(p.near ? 'Missed by a hair' : 'Fell into the dark');
+    const fell = p.y > tideY - 4 || p.y > camTop + H + 40;
+    if(fell) die(p.anchor ? 'The tide got you' : p.near ? 'Missed by a hair' : 'Missed the ring');
     updateHud();
   }
 
@@ -622,6 +645,35 @@ function draw(){
     ctx.save(); ctx.translate(g.x, y + (g.taken ? -g.t*40 : Math.sin(time*2 + g.t)*3)); ctx.rotate(Math.PI/4 + time*.6);
     ctx.shadowColor = '#9ff0d0'; ctx.shadowBlur = 12; ctx.fillStyle = '#d8fff0';
     ctx.fillRect(-s/2, -s/2, s, s); ctx.restore(); ctx.globalAlpha = 1;
+  }
+
+  // guide path for the first rings: where you'd fly if you let go now
+  const guide = clamp((12 - maxIdx)/6, 0, 1);
+  if(p.anchor && guide > 0 && state !== 'over'){
+    let x = p.x, y = p.y, vx = p.vx*BOOST, vy = p.vy*BOOST, hit = false, hitA = null;
+    const dots = [], dt = 1/60;
+    for(let s=0; s<54 && !hit; s++){
+      vy += G*dt; x += vx*dt; y += vy*dt;
+      if(x < PR){ x = PR; vx = -vx*.6; } else if(x > W-PR){ x = W-PR; vx = -vx*.6; }
+      for(const a of anchors){
+        if(a === p.anchor || a.broken || a.i <= p.anchor.i) continue;
+        if(Math.hypot(x - a.x, y - a.y) < grabR(a.i)){ hit = true; hitA = a; break; }
+      }
+      if(s % 2 === 0) dots.push([x, y]);
+    }
+    ctx.fillStyle = hit ? '#9ff0d0' : '#f6eefc';
+    dots.forEach(([dx, dy], k) => {
+      ctx.globalAlpha = guide*(hit ? .85 : .28)*(1 - k/dots.length*.6);
+      ctx.beginPath(); ctx.arc(dx, dy - camTop, hit ? 3 : 2.2, 0, 6.283); ctx.fill();
+    });
+    if(hitA){   // light up the ring you'd catch: "tap now"
+      const R = grabR(hitA.i), hy = hitA.y - camTop;
+      ctx.globalAlpha = guide*.16; ctx.fillStyle = '#9ff0d0';
+      ctx.beginPath(); ctx.arc(hitA.x, hy, R, 0, 6.283); ctx.fill();
+      ctx.globalAlpha = guide*.8; ctx.strokeStyle = '#9ff0d0'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(hitA.x, hy, R, 0, 6.283); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
   }
 
   // rope

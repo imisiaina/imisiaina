@@ -38,13 +38,15 @@ The values that control difficulty are near the top of the script:
 
 | Constant | What it controls |
 | --- | --- |
-| `BOOST` | Extra speed when you let go. Higher values mean bigger jumps. |
-| `AMP` | How high the swing goes before you let go |
-| `grabR()` | Grab radius around each ring. It shrinks as you climb. |
-| `24 + score*1.05` in `update()` | How fast the tide rises |
+| `minWindow(i)` | The shortest tap window (in ms) the level generator allows for ring *i*. Raise it to make the game easier. |
+| `leapChance(i)` | How often a ring is a real leap instead of a breather (a ring whose catch zone brushes your swing, so you can tap as you pass) |
+| `grabR(i)` | Catch radius around each ring. It shrinks slowly as you climb. |
+| `12 + score*0.7` in `update()` | How fast the tide rises, after a 4-second head start |
+| `guide` in `draw()` | The guide path and ring highlight, shown fully until ring 6 and faded out by ring 12 |
+| `BOOST`, `AMP` | Jump strength and swing height. The generator measures every ring against these, so changing them stays fair. |
 | `SKINS` | Ember colours and how many gems unlock each one |
 
-Every new ring is checked to be reachable before it's placed (`reachable()`). If you change `BOOST`, `AMP` or `G`, the generator adapts automatically.
+Before placing each ring, the generator measures its tap window with `releaseWindow()`. That's the stretch of each swing during which letting go actually lands you on the ring. No ring is ever placed with a window below `minWindow`.
 
 ## What's iOS-specific
 
