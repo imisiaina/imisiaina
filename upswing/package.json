@@ -1,0 +1,20 @@
+{
+  "name": "upswing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Upswing: a one-tap arcade climber. iOS app built with Capacitor.",
+  "scripts": {
+    "sync": "cap sync ios",
+    "open": "cap open ios",
+    "ios": "cap sync ios && cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/core": "8.5.3",
+    "@capacitor/haptics": "8.0.2",
+    "@capacitor/ios": "8.5.3",
+    "@capacitor/preferences": "8.0.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.3"
+  }
+}

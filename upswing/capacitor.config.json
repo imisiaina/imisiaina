@@ -1,0 +1,12 @@
+{
+  "appId": "com.imisiaina.upswing",
+  "appName": "Upswing",
+  "webDir": "www",
+  "backgroundColor": "#140b22",
+  "ios": {
+    "contentInset": "never",
+    "scrollEnabled": false,
+    "allowsLinkPreview": false,
+    "backgroundColor": "#140b22"
+  }
+}
